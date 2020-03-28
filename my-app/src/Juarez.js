@@ -23,9 +23,9 @@ function Juarez() {
   },[])
 
   return (
-      <div>
-          <RouterTab />
-          <div className="forecast-table">
+    <div>
+        <RouterTab />
+        <div className="forecast-table">
             <ul>
                 {displayvalues.map(item=>(
                 <li>{item.dt_txt}---{item.main.temp}---{item.main.humidity}</li>

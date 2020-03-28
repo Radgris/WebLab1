@@ -4,10 +4,11 @@ import './App.css';
 import RouterTab from './RouterTab';
 
 function Chihuahua() {
-  
+
   const [displayvalues, SetValues] = React.useState([])
 
-  const getDatafromApi = async () => {
+  const getDatafromApi = async (param) => { 
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?id=4014338&cnt='+{param}+'&APPID=2104d38bbd22c6405f6a68ca788c2af0'
     const apidata = await fetch('http://api.openweathermap.org/data/2.5/forecast?id=4014338&cnt=8&APPID=2104d38bbd22c6405f6a68ca788c2af0')
     const dates = await apidata.json()
     const parsed = dates.list
@@ -19,12 +20,14 @@ function Chihuahua() {
 
   React.useEffect(()=>{
     //console.log('effectused')
-    var datafromapi = getDatafromApi()
+    var datafromapi = getDatafromApi(8)
   },[])
 
   return (
     <div>
         <RouterTab />
+        <input type='number'></input>
+        <button onClick={getDatafromApi()}></button>
         <div className="forecast-table">
             <ul>
                 {displayvalues.map(item=>(
